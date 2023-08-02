@@ -1,8 +1,9 @@
-
-import Wallet from "@/Components/Wallet"
+import dynamic from 'next/dynamic'
 import { WagmiConfig } from "wagmi"
 import { config } from '././../Components/Wagmi'
 
+
+const Wallet = dynamic(() => import('@/Components/Wallet'), { ssr: false })
 
 export default function Home() {
   return (
