@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
+const path = require('path');
+
 const nextConfig = {
+  resolve: {
+    alias: {
+      '@components': path.resolve(__dirname, 'src/components'),
+    },
+  },
+};
 
-    resolve: {
-        alias: {
-          '@components': path.resolve(__dirname, 'src/components'),
-        },
-      },
-}
-import path from 'path';
-
-export default nextConfig
+module.exports = nextConfig;
