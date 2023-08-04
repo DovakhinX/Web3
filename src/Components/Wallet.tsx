@@ -19,7 +19,7 @@ export default function Wallet() {
                     {connector.name} ({status})
                 </button>))}
             {isConnected?(
-                <div className="flex flex-col items-start gap-4  border-2 border-lime-200 w-[650px] h-[200px] rounded-md shadow-xl p-4 bg-lime-200 ">
+                <div className="flex flex-col items-start gap-4  border-2 border-lime-200 w-max h-max rounded-md shadow-xl p-4 bg-lime-200 ">
                     <p className="text-xl ">Account: {address}</p>
                     <p className="text-xl "> Balance: {balance ? `${balance.formatted} ${balance.symbol}` : `0`}</p>
                 </div>

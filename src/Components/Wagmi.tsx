@@ -1,12 +1,12 @@
 'use client'
-import {  createConfig, configureChains, mainnet } from 'wagmi'
+import {  createConfig, configureChains, mainnet, sepolia } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import { goerli } from 'wagmi/chains'
 
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet,goerli],
+  [mainnet,goerli,sepolia],
   [ publicProvider()],
 
 )
