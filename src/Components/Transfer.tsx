@@ -18,7 +18,7 @@ export default function Transfer() {
         to: txnData.address,
         value: parseEther(txnData.value),
     })
-    const { isLoading, isSuccess, sendTransaction, isError } =
+    const { isLoading, isSuccess, sendTransaction } =
         useSendTransaction(config)
 
     return (isConnected ? (
