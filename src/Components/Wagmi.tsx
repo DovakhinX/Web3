@@ -1,13 +1,16 @@
 'use client'
-import {  createConfig, configureChains, mainnet, sepolia } from 'wagmi'
+import { createConfig, configureChains, mainnet, sepolia } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
-import { goerli } from 'wagmi/chains'
+import { goerli, polygon, polygonMumbai } from 'wagmi/chains'
+import { infuraProvider } from 'wagmi/providers/infura'
 
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet,goerli,sepolia],
-  [ publicProvider()],
+  [mainnet, goerli, sepolia, polygonMumbai, polygon, polygonMumbai],
+  [infuraProvider({
+    apiKey: '2dbf3fc9f6144f9f9b01f5dc31249329',
+  }), publicProvider()],
 
 )
 

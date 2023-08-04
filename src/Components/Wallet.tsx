@@ -5,7 +5,7 @@ import { useAccount, useConnect, useBalance } from 'wagmi'
 export default function Wallet() {
 
     const { connect, connectors } = useConnect()
-    const { address, isConnected,isDisconnected,status } = useAccount()
+    const { address, isConnected, isDisconnected, status } = useAccount()
     const { data: balance } = useBalance({ address })
 
     return (
@@ -18,16 +18,17 @@ export default function Wallet() {
                     onClick={() => connect({ connector })}>
                     {connector.name} ({status})
                 </button>))}
-            {isConnected?(
+            {isConnected ? (
                 <div className="flex flex-col items-start gap-4  border-2 border-lime-200 w-max h-max rounded-md shadow-xl p-4 bg-lime-200 ">
                     <p className="text-xl ">Account: {address}</p>
                     <p className="text-xl "> Balance: {balance ? `${balance.formatted} ${balance.symbol}` : `0`}</p>
+
                 </div>
-            ):isDisconnected ? (
+            ) : isDisconnected ? (
                 <div className="flex flex-col items-center justify-center  border-2 border-lime-200 w-[400px] h-[200px] rounded-md shadow-xl p-4  bg-slate-500  ">
-                <p className="text-2xl "> Please connect your wallet</p>
-            </div>
-            ):(null)
+                    <p className="text-2xl "> Please connect your wallet</p>
+                </div>
+            ) : (null)
             }
         </div>
     )
