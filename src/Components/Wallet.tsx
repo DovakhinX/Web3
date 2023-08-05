@@ -25,8 +25,8 @@ export default function Wallet() {
 
                 </div>
             ) : isDisconnected ? (
-                <div className="flex flex-col items-center justify-center  border-2 border-lime-200 w-[400px] h-[200px] rounded-md shadow-xl p-4  bg-slate-500  ">
-                    <p className="text-2xl "> Please connect your wallet</p>
+                <div className="flex flex-col items-center justify-center  border-2 border-lime-200 w-max h-[200px] rounded-md shadow-xl p-4  bg-slate-500  ">
+                    <p className="text-2xl phone:text-lg "> Please connect your wallet</p>
                 </div>
             ) : (null)
             }
