@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { parseEther } from 'viem'
-import { useAccount, useSendTransaction, usePrepareSendTransaction } from 'wagmi'
+import { useAccount, useSendTransaction, usePrepareSendTransaction, } from 'wagmi'
 
 interface Data {
     address: string,
@@ -18,7 +18,7 @@ export default function Transfer() {
         to: txnData.address,
         value: parseEther(txnData.value),
     })
-    const { isLoading, isSuccess, sendTransaction } =
+    const { isLoading, isSuccess, sendTransactionAsync } =
         useSendTransaction(config)
 
     return (isConnected ? (
@@ -29,11 +29,11 @@ export default function Transfer() {
                     <p>Send to :</p>
                     <input onChange={(e) => setTxnData({ ...txnData, address: e.target.value })} value={txnData.address} />
                     <p>Amount :</p>
-                    <input onChange={(e) => setTxnData({ ...txnData, value: (e.target.value) })} value={txnData.value} />
+                    <input onChange={(e) => setTxnData({ ...txnData, value: (e.target.value) })} value={txnData.value} type='number'/>
                 </div>
                 <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-xl"
                     onClick={() => {
-                        sendTransaction?.()
+                        sendTransactionAsync?.().then(()=>setTxnData({ ...txnData, address: '', value: '' }))
 
                     }}>Send</button>
             </div>
