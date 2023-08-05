@@ -23,15 +23,15 @@ export default function Transfer() {
 
     return (isConnected ? (
         <>
-            <h3 className='text-2xl'>Transfer tokens</h3>
-            <div className="h-max w-max bg-orange-300 p-4 rounded-md shadow-xl flex-row flex items-center gap-8">
+            <h3 className='text-4xl tablet:text-2xl phone:text-xl '>Transfer tokens</h3>
+            <div className="h-max w-max bg-orange-300 p-4 rounded-md shadow-xl flex-row flex items-center gap-8 phone:gap-6 phone:flex-col">
                 <div>
                     <p>Send to :</p>
                     <input onChange={(e) => setTxnData({ ...txnData, address: e.target.value })} value={txnData.address} />
                     <p>Amount :</p>
                     <input onChange={(e) => setTxnData({ ...txnData, value: (e.target.value) })} value={txnData.value} type='number'/>
                 </div>
-                <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-xl"
+                <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-xl phone:px-6"
                     onClick={() => {
                         sendTransactionAsync?.().then(()=>setTxnData({ ...txnData, address: '', value: '' }))
 

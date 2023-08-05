@@ -1,8 +1,7 @@
 import dynamic from 'next/dynamic'
 import { WagmiConfig } from "wagmi"
 import { config } from '../Components/Wagmi'
-//import Wallet from '../components/Wallet'
-//import Transfer from '../components/Transfer'
+
 
 
 const Wallet = dynamic(() => import('@/Components/Wallet'), { ssr: false })
