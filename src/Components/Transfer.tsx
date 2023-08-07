@@ -29,11 +29,11 @@ export default function Transfer() {
                     <p>Send to :</p>
                     <input onChange={(e) => setTxnData({ ...txnData, address: e.target.value })} value={txnData.address} />
                     <p>Amount :</p>
-                    <input onChange={(e) => setTxnData({ ...txnData, value: (e.target.value) })} value={txnData.value} type='number'/>
+                    <input onChange={(e) => setTxnData({ ...txnData, value: e.target.value })} value={txnData.value} type='number' />
                 </div>
                 <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-xl phone:px-6"
                     onClick={() => {
-                        sendTransactionAsync?.().then(()=>setTxnData({ ...txnData, address: '', value: '' }))
+                        sendTransactionAsync?.().then(() => setTxnData({ ...txnData, address: '', value: '' }))
 
                     }}>Send</button>
             </div>

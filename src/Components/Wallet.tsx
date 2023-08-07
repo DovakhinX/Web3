@@ -26,7 +26,7 @@ export default function Wallet() {
 </div>
 
             <div className='flex flex-row gap-3'>
-                <select className='rounded-md shadow-xl p-2' onChange={(e) => setCurrentNetwork(Number(e.target.value))   }>
+                <select className='rounded-md shadow-xl p-2 phone:p-0' onChange={(e) => setCurrentNetwork(Number(e.target.value))   }>
                     {chains?.map((chain) => {
                         return (
                             <option key={chain.id} value={chain.id}>{chain.name}</option>
