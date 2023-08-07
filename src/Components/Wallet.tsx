@@ -9,7 +9,7 @@ export default function Wallet() {
     const { data: balance } = useBalance({ address })
     const { chain } = useNetwork()
     const { switchNetwork, chains } = useSwitchNetwork()
-    const [currentNetwork, setCurrentNetwork] = useState(chain?.id)
+    const [currentNetwork, setCurrentNetwork] = useState(chain?.id || 1)
 
     return (
         <div className="flex flex-col items-center mb-5 gap-4 tablet:gap-3">
@@ -26,7 +26,7 @@ export default function Wallet() {
 </div>
 
             <div className='flex flex-row gap-3'>
-                <select className='rounded-md shadow-xl p-2' onChange={(e) => setCurrentNetwork(Number(e.target.value))}>
+                <select className='rounded-md shadow-xl p-2' onChange={(e) => setCurrentNetwork(Number(e.target.value))   }>
                     {chains?.map((chain) => {
                         return (
                             <option key={chain.id} value={chain.id}>{chain.name}</option>
