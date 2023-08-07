@@ -23,7 +23,7 @@ export default function Transfer() {
 
     return (isConnected ? (
         <>
-            <h3 className='text-4xl tablet:text-2xl phone:text-xl '>Transfer tokens</h3>
+            <h3 className='text-4xl tablet:text-2xl phone:text-x mb-2 '>Transfer tokens</h3>
             <div className="h-max w-max bg-orange-300 p-4 rounded-md shadow-xl flex-row flex items-center gap-8 phone:gap-6 phone:flex-col">
                 <div>
                     <p>Send to :</p>
