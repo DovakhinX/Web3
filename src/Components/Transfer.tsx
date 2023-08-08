@@ -1,7 +1,8 @@
 'use client'
+
 import React from 'react'
 import { parseEther } from 'viem'
-import { useAccount, useSendTransaction, usePrepareSendTransaction, } from 'wagmi'
+import { useAccount, useSendTransaction, usePrepareSendTransaction, useBalance, useWaitForTransaction, } from 'wagmi'
 
 interface Data {
     address: string,
@@ -9,17 +10,27 @@ interface Data {
 }
 
 export default function Transfer() {
+
+
+    const [txnHash, setTxnHash] = React.useState<undefined | `0x${string}`>()
+
+    const { isSuccess } = useWaitForTransaction({ hash: txnHash })
     const [txnData, setTxnData] = React.useState<Data>({
         address: '',
         value: ''
     })
-    const { isConnected } = useAccount()
+    const { isConnected, address } = useAccount()
     const { config } = usePrepareSendTransaction({
         to: txnData.address,
         value: parseEther(txnData.value),
     })
-    const { isLoading, isSuccess, sendTransactionAsync } =
+    const { sendTransactionAsync } =
         useSendTransaction(config)
+
+    const { refetch } = useBalance({ address, watch: true })
+
+    React.useEffect(() => { if (isSuccess == true) { refetch() } }, [isSuccess, refetch])
+
 
     return (isConnected ? (
         <>
@@ -33,22 +44,13 @@ export default function Transfer() {
                 </div>
                 <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-xl phone:px-6"
                     onClick={() => {
-                        sendTransactionAsync?.().then(() => setTxnData({ ...txnData, address: '', value: '' }))
-
-                    }}>Send</button>
+                        sendTransactionAsync?.().then((data) => {
+                            setTxnHash(data?.hash)
+                            setTxnData({ ...txnData, address: '', value: '' })
+                        })
+                    }
+                    }>Send</button>
             </div>
-            {isLoading ? (<p>Loading...</p>) : (null)}
-            {isSuccess ? (<p>Transfer successful!!</p>) : (null)}
         </>) : (null)
-
-
-
-
-
-
     )
-
-
-
-
 }

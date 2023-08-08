@@ -4,12 +4,19 @@ import { useAccount, useConnect, useBalance, useNetwork, useSwitchNetwork } from
 
 export default function Wallet() {
 
+
+
     const { connect, connectors } = useConnect()
     const { address, isConnected, isDisconnected, status } = useAccount()
-    const { data: balance } = useBalance({ address })
+    const { data: balance} = useBalance({ address, watch: true })
     const { chain } = useNetwork()
     const { switchNetwork, chains } = useSwitchNetwork()
     const [currentNetwork, setCurrentNetwork] = useState(chain?.id || 1)
+
+
+
+
+
 
     return (
         <div className="flex flex-col items-center mb-5 gap-4 tablet:gap-3">
@@ -26,7 +33,7 @@ export default function Wallet() {
 </div>
 
             <div className='flex flex-row gap-3'>
-                <select className='rounded-md shadow-xl p-2 phone:p-0' onChange={(e) => setCurrentNetwork(Number(e.target.value))   }>
+                <select className='rounded-md shadow-xl p-2 phone:' onChange={(e) => setCurrentNetwork(Number(e.target.value))   }>
                     {chains?.map((chain) => {
                         return (
                             <option key={chain.id} value={chain.id}>{chain.name}</option>
