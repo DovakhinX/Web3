@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useContractRead } from 'wagmi';
-import dat from '../../artifacts/contracts/test.sol/Test.json'
+import dat from '../..//artifacts/contracts/test.sol/Test.json'
 
 export default function Contract() {
 
