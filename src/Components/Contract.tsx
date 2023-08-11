@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { useContractRead } from 'wagmi'
-import { abi } from '../../artifacts/contracts/test.sol/Test.json'
+import { useContractRead } from 'wagmi';
+import dat from '../../artifacts/contracts/test.sol/Test.json'
 
 export default function Contract() {
 
@@ -15,7 +15,7 @@ export default function Contract() {
 
     const { data, isError, isLoading, refetch, error } = useContractRead({
         address: '0xCc10cFBFdD08ae6f991bDBa81A63B8b0d2000244',
-        abi: abi,
+        abi: dat.abi,
         functionName: 'sayHello',
 
     })
