@@ -17,7 +17,7 @@ import type {
   TypedEventLog,
   TypedListener,
   TypedContractMethod,
-} from "../common";
+} from "./typechain-types/common";
 
 export interface TestInterface extends Interface {
   getFunction(nameOrSignature: "sayHello"): FunctionFragment;
